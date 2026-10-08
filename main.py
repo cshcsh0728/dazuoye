@@ -11,13 +11,14 @@ def get_valid_date_input(prompt: str) -> str:
     while True:
         date_str = input(prompt).strip()
         try:
+            #
             datetime.datetime.strptime(date_str, '%Y-%m-%d')
             return date_str
         except ValueError:
             print("日期格式错误，请重新输入（格式如：2026-10-08）：")
 
 
-def get_valid_int_input(prompt: str, max_val: int = None) -> int:
+def get_valid_int_input(prompt: str, max_val: int | None = None) -> int:
     """验证整数输入，处理字母、超大数字、回车"""
     while True:
         try:
