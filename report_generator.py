@@ -67,10 +67,17 @@ def generate_html_report(manager, filename):
     """
 
     for i, task in enumerate(tasks, 1):
-        is_overdue = not task.completed and task.due_date < today
+        from datetime import datetime
+        today_date = datetime.now().date()
+        is_overdue = not task.completed and datetime.strptime(task.due_date, '%Y-%m-%d').date() < today_date
+        #is_overdue = not task.completed and task.due_date < today(原格式)
+        #明确按日期对象比较
         row_class = 'class="overdue"' if is_overdue else ''
         title_class = 'class="completed"' if task.completed else ''
         status_class = 'class="status-completed"' if task.completed else 'class="status-uncompleted"'
+
+        safe_title = html.escape(str(task.title or ""))  # ← 新增这一行
+        safe_priority = html.escape(str(task.priority or ""))  # 优先级也顺手处理
 
         html_content += f"""
                     <tr {row_class}>
