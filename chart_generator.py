@@ -4,7 +4,7 @@ import numpy as np
 import datetime
 
 def generate_chart(manager, filename="chart.png"):
-"""
+    """
 
     :param manager: 任务管理器对象
     :param filename: 保存的图片文件名
