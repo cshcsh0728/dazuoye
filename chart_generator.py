@@ -4,13 +4,7 @@ import numpy as np
 import datetime
 
 def generate_chart(manager, filename="chart.png"):
-    """
 
-    :param manager: 任务管理器对象
-    :param filename: 保存的图片文件名
-    :return:
-    
-    """
     # 统计各优先级数量
     high = sum(1 for t in manager.get_all_tasks() if t.priority == "高")
     medium = sum(1 for t in manager.get_all_tasks() if t.priority == "中")
